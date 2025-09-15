@@ -1,6 +1,13 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+?>
+
+
+<?php
 
 include('includes/connect.php');
+var_dump($connect);
 include('includes/config.php');
 include('includes/functions.php');
 
@@ -14,36 +21,65 @@ include('includes/header.php');
 
 <main style="flex-wrap: wrap; gap: 16px; align-items: stretch;">
 
-    <h2 class="w3-green w3-padding">Featured Themes</h2>
-    <p>TODO: 4 RANDOM THEMES</p>
-    <a href="<?=SITE_URL?>themes.php">View All Themes</a>
+ <div class="w3-card w3-padding w3-margin">
+        <h2 class="w3-green w3-padding">Database Connection Test</h2>
+        <?php
+        if ($connect) {
+            echo '<p class="w3-text-green">✅ Database connection successful!</p>';
+            echo '<p><strong>Connected to:</strong> ' . DB_DATABASE . '</p>';
+            
+            // testing if tables exist
+            $tables_check = [];
+            $table_names = ['assets', 'stats', 'users'];
+            
+            foreach ($table_names as $table) {
+                $result = mysqli_query($connect, "SHOW TABLES LIKE '$table'");
+                if (mysqli_num_rows($result) > 0) {
+                    $tables_check[$table] = 'Exists';
+                } else {
+                    $tables_check[$table] = 'Missing';
+                }
+            }
+            
+            echo '<h3>Database Tables Status:</h3>';
+            echo '<ul>';
+            foreach ($tables_check as $table => $status) {
+                echo '<li><strong>' . $table . ':</strong> ' . $status . '</li>';
+            }
+            echo '</ul>';
+            
+        } else {
+            echo '<p class="w3-text-red">Database connection failed!</p>';
+            echo '<p>Error: ' . mysqli_connect_error() . '</p>';
+        }
+        ?>
+    </div>
 
-    <hr>
+    <div class="w3-card w3-padding w3-margin">
+        <h2 class="w3-blue w3-padding">Project Information</h2>
+        <p><strong>Developer:</strong> Tarun Shokeen</p>
+        <p><strong>Project:</strong> BrickMMO Analytics Application</p>
+        <p><strong>Course:</strong> HTTP 5310 Capstone</p>
+        <p><strong>Professor:</strong> Adam Thomas (codeadamca)</p>
+    </div>
 
-    <h2 class="w3-blue w3-padding">Featued Sets</h2>
-    <p>TODO: 4 RANDOM COLOURS</p>
+    <div class="w3-card w3-padding w3-margin">
+        <h2 class="w3-indigo w3-padding">Features to Build</h2>
+        <ul>
+            <li>JavaScript tracking script for page views</li>
+            <li>Admin panel for asset management</li>
+            <li>Statistics dashboard with charts</li>
+            <li>Export functionality (CSV)</li>
+            <li>User authentication system</li>
+        </ul>
+    </div>
 
-    <hr>
+    <div class="w3-card w3-padding w3-margin">
+        <h2 class="w3-purple w3-padding">Quick Links</h2>
+        <p><a href="admin/" class="w3-button w3-green">Admin Panel</a> (Coming Soon)</p>
+        <p><a href="tracker.js" class="w3-button w3-blue" target="_blank">View Tracking Script</a></p>
+    </div>
 
-    <h2 class="w3-indigo w3-padding">Featued Minifigs</h2>
-    <p>TODO: 4 RANDOM MINIFIGS</p>
-
-    <hr>
-
-    <h2 class="w3-purple w3-padding">Featued Parts</h2>
-    <p>TODO: 4 RANDOM PARTS</p>
-
-    <hr>
-
-    <h2 class="w3-deep-orange w3-padding">Featured Categories</h2>
-    <p>TODO: 4 RANDOM PART CATEGORIES</p>
-    <a href="<?=SITE_URL?>categories.php">View All Categories</a>
-
-    <hr>
-
-    <h2 class="w3-dark-grey w3-padding">Featured Colours</h2>
-    <p>TODO: 4 RANDOM COLOURS</p>
-    <a href="<?=SITE_URL?>colours.php">View All Colours</a>
     
 </main>
 

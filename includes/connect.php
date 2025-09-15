@@ -19,3 +19,13 @@ $connect = mysqli_connect(
   DB_USERNAME, 
   DB_PASSWORD, 
   DB_DATABASE);
+
+  // Check connection and display error if failed
+if (!$connect) {
+    die("Database connection failed: " . mysqli_connect_error());
+}
+
+// Set charset to utf8mb4 for proper Unicode support
+mysqli_set_charset($connect, "utf8mb4");
+
+?>
