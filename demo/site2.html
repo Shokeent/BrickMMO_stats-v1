@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Site 2 - Creative Agency</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #1a1a1a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        .hero {
+            height: 100vh;
+            background: linear-gradient(45deg, #ff6b6b, #ffa500, #ff1744);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        .hero h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section {
+            margin-bottom: 60px;
+        }
+        .section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #ff6b6b;
+            text-align: center;
+        }
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .service {
+            background: #2d2d2d;
+            padding: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.2);
+        }
+        .service h3 {
+            color: #ffa500;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+        }
+        .text-center { text-align: center; }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Creative Studio</h1>
+            <p>Where Imagination Meets Innovation</p>
+            <a href="#services" class="btn">Explore Our Work</a>
+        </div>
+    </section>
+
+    <div class="content">
+        <section class="section" id="services">
+            <h2>Our Creative Services</h2>
+            <div class="services">
+                <div class="service">
+                    <h3>Brand Design</h3>
+                    <p>Creating memorable brand identities that resonate with your audience and stand out in the marketplace.</p>
+                </div>
+                <div class="service">
+                    <h3>Web Development</h3>
+                    <p>Building stunning, responsive websites that deliver exceptional user experiences across all devices.</p>
+                </div>
+                <div class="service">
+                    <h3>Digital Marketing</h3>
+                    <p>Strategic campaigns that drive engagement, increase conversions, and grow your online presence.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Let's Create Something Amazing</h2>
+            <p style="text-align: center; font-size: 1.2em; margin-bottom: 30px;">
+                Ready to transform your vision into reality? Our team of creative professionals is here to help you succeed.
+            </p>
+            <div class="text-center">
+                <a href="#contact" class="btn">Start Your Project</a>
+            </div>
+        </section>
+    </div>
+
+    <script src="../tracker.js" data-asset-id="2"></script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS `assets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
+  `url` varchar(2048) NULL,
   `description` text NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -40,12 +41,14 @@ ON DUPLICATE KEY UPDATE
 `password` = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
 `role` = 'admin';
 
-INSERT INTO assets (name, description, created_at) VALUES 
-('Demo Website', 'Sample website for testing BrickMMO Stats tracking', NOW()),
-('Demo2 E-commerce', 'Second demo website showcasing e-commerce tracking features', NOW());
+INSERT INTO assets (id, name, url, description, created_at) VALUES 
+(1, 'TechFlow Solutions', 'http://localhost/BrickMMO_stats-v1/demo/site1.html', 'Tech company demo website showcasing innovative technology solutions', NOW()),
+(2, 'Creative Studio', 'http://localhost/BrickMMO_stats-v1/demo/site2.html', 'Creative agency demo website with modern design and animation effects', NOW()),
+(3, 'ShopNow Store', 'http://localhost/BrickMMO_stats-v1/demo/site3.html', 'E-commerce demo website featuring premium product showcase and shopping features', NOW());
 
 INSERT INTO `stats` (`asset_id`, `url`, `ip_address`, `browser`, `os`, `user_agent`, `referrer`, `viewed_at`) 
 VALUES 
-(1, 'http://localhost/test-page', '127.0.0.1', 'Chrome', 'Windows 10', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36', 'https://google.com', NOW()),
-(1, 'http://localhost/another-page', '127.0.0.1', 'Firefox', 'macOS', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)', 'https://github.com', DATE_SUB(NOW(), INTERVAL 1 HOUR)),
+(1, 'http://localhost/BrickMMO_stats-v1/demo/site1.html', '127.0.0.1', 'Chrome', 'Windows 10', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36', 'https://google.com', NOW()),
+(2, 'http://localhost/BrickMMO_stats-v1/demo/site2.html', '127.0.0.1', 'Firefox', 'macOS', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)', 'https://github.com', DATE_SUB(NOW(), INTERVAL 1 HOUR)),
+(3, 'http://localhost/BrickMMO_stats-v1/demo/site3.html', '192.168.1.100', 'Safari', 'iOS', 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X)', 'https://twitter.com', DATE_SUB(NOW(), INTERVAL 2 HOUR)),
 (1, 'http://localhost/mobile-page', '192.168.1.100', 'Safari', 'iOS', 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0)', NULL, DATE_SUB(NOW(), INTERVAL 2 HOUR));
