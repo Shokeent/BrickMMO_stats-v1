@@ -1,9 +1,6 @@
 <?php
 
-// ************************************************************
-// Initialize the session
-// 
-// The session creates a file on the server that allows PHP to 
-// to store data associated with each visitor to your web site.
-
 session_start();
+
+define('SITE_URL', '/BrickMMO_stats-v1/');
+define('ADMIN_URL', SITE_URL . 'admin/');
